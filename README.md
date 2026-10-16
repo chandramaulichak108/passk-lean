@@ -1,24 +1,21 @@
-# Lean 4 formalization of pass@k learning
+# Pass@k Lean Formalization
 
-This repository accompanies **[Pass@k Feedback for Apprenticeship Learning](https://arxiv.org/abs/2609.33291)**. It develops a Lean 4 / Mathlib formalization of the paper's deterministic learning argument, exponential-moment method, PAC bounds, and information-theoretic minimax analysis.
+This repository contains a **Lean 4 formalization** of mathematical results and proof techniques associated with [*The Statistical Benefits of Multiple Responses for Learning from Demonstrations*](https://arxiv.org/abs/2609.33291), by Chandramauli Chakraborty and Cong Ma.
 
-**Status: formalization in progress.** The existing finite-space foundation and the staged proof modules below are not equivalent to a machine-checked verification of every manuscript theorem. In particular, several important mathematical dependencies still require Lean proofs. See [PROOF_STATUS.md](PROOF_STATUS.md) for a precise theorem-level ledger.
+The formalization uses [Mathlib](https://github.com/leanprover-community/mathlib4) and covers pass@k values for potentially dependent response tuples, greedy coverage and multiplicative weights, online-to-batch identities, finite probability inequalities, and tools for minimax lower bounds. The main entry point is [`PassK.lean`](PassK.lean).
 
-## Proof organization
+## Formalized components
 
-| Stage | Main result | Lean files | Scope of current work |
-| --- | --- | --- | --- |
-| **1** | Online regret | [`Coverage.lean`](PassK/Coverage.lean), [`OnlineRegret.lean`](PassK/OnlineRegret.lean), [`Stage1LogPotential.lean`](PassK/Stage1LogPotential.lean), [`Stage1LogUpdates.lean`](PassK/Stage1LogUpdates.lean) | Greedy weight invariant, log-sum bound, exact log-update telescope, regret arithmetic; threshold-to-regret identification still needed |
-| **2** | Exponential moment | [`Stage2Exponential.lean`](PassK/Stage2Exponential.lean), [`MomentToTail.lean`](PassK/MomentToTail.lean) | Exponential chord inequalities, single-step moment calculation, final budget reduction; adaptive conditional iteration not yet proved |
-| **3** | Standard / robust PAC upper bounds | [`FiniteTail.lean`](PassK/FiniteTail.lean), [`StandardRobustPAC.lean`](PassK/StandardRobustPAC.lean), [`Stage3Rates.lean`](PassK/Stage3Rates.lean) | Markov, finite union bound, logarithmic constants; PAC implications are conditional on the missing algorithmic moment bound |
-| **4** | Minimax lower bounds | [`FiniteTesting.lean`](PassK/FiniteTesting.lean), [`Stage4LeCam.lean`](PassK/Stage4LeCam.lean) | Two-point testing via overlap and total variation; Fano/Assouad and the paper's hard-instance families remain |
-| **5** | Minimax rate theorems | [`LowerBounds.lean`](PassK/LowerBounds.lean), [`Stage5Minimax.lean`](PassK/Stage5Minimax.lean) | Finite minimax definitions and explicit upper/lower-bound combination; the paper's rate witnesses are not yet proved |
+- **Pass@k values and policies.** [`Values.lean`](PassK/Values.lean), [`Definitions.lean`](PassK/Definitions.lean), and [`PolicyMixture.lean`](PassK/PolicyMixture.lean) define pass@k evaluation and policy mixtures over *complete response tuples*, allowing dependence among responses.
+- **Greedy coverage and online learning.** [`Coverage.lean`](PassK/Coverage.lean), [`OnlineRegret.lean`](PassK/OnlineRegret.lean), [`Stage1LogPotential.lean`](PassK/Stage1LogPotential.lean), and [`Stage1LogUpdates.lean`](PassK/Stage1LogUpdates.lean) develop weighted-coverage inequalities, the non-increasing potential invariant, and logarithmic weight identities.
+- **Probability and generalization.** [`FiniteTail.lean`](PassK/FiniteTail.lean), [`MomentToTail.lean`](PassK/MomentToTail.lean), [`OneStepIID.lean`](PassK/OneStepIID.lean), and [`StandardRobustPAC.lean`](PassK/StandardRobustPAC.lean) contain finite tail bounds, the policy-mixture regret identity, and conditional standard/robust PAC reductions.
+- **Information-theoretic lower-bound tools.** [`FiniteTesting.lean`](PassK/FiniteTesting.lean), [`Stage4LeCam.lean`](PassK/Stage4LeCam.lean), [`LowerBounds.lean`](PassK/LowerBounds.lean), and [`Stage5Minimax.lean`](PassK/Stage5Minimax.lean) formalize two-point testing arguments and general minimax comparison principles.
 
-Other modules define pass@k values for **possibly dependent response tuples**, the mixture of full policy snapshots, and the one-step population-excess identity. The policy-mixture construction samples one snapshot and draws the entire tuple from that snapshot, rather than independently mixing individual responses.
+Further staged developments are in [`Stage2Exponential.lean`](PassK/Stage2Exponential.lean) and [`Stage3Rates.lean`](PassK/Stage3Rates.lean).
 
-## Build
+## Verification
 
-Install Lean using [elan](https://lean-lang.org/install/). This project pins **Lean 4.34.1** (see `lean-toolchain`). From the repository root:
+The project targets **Lean 4.34.1**, as specified in [`lean-toolchain`](lean-toolchain). Install Lean with [elan](https://lean-lang.org/install/) and run from the repository root:
 
 ```bash
 lake update
@@ -26,10 +23,19 @@ lake exe cache get
 lake build
 ```
 
-The [GitHub Actions workflow](.github/workflows/lean.yml) also runs the build. A successful build verifies the statements implemented in Lean, **not** unimplemented manuscript theorems. This expanded set of modules has not yet been compiled with the pinned toolchain in the authoring environment; further compiler corrections may be needed.
+A successful build machine-checks the theorem statements and proofs included in the compiled Lean modules. The [GitHub Actions workflow](.github/workflows/lean.yml) runs the project build on pushes and pull requests.
 
-## Research-paper theorem coverage
+## Scope
 
-The paper's primary theorems correspond to `thm:online-regret`, `lem:exponential_moment`, `thm:standard_passk_upper`, `thm:robust_passk_upper`, and the standard/robust minimax lower-bound theorems. The declarations and remaining proof obligations are itemized in [PROOF_STATUS.md](PROOF_STATUS.md).
+This repository **does contain a formalization**, including proved foundational lemmas and useful reductions. It is **not yet a complete, end-to-end machine-checked verification of every main theorem** in the paper: some paper-level claims still depend on algorithm-specific moment bounds or minimax constructions not yet discharged in Lean. Compilation of all staged modules also remains to be confirmed. See [`PROOF_STATUS.md`](PROOF_STATUS.md) for the detailed theorem-by-theorem correspondence.
 
-The project uses neither `sorry` nor new axioms to disguise unfinished arguments. A lemma with a hypothesis such as `hmoment` or `hard` verifies only an implication **from that hypothesis**; it does not prove the hypothesis for the paper's algorithm or hard-instance construction.
+## Repository structure
+
+```text
+PassK.lean             Main Lean entry point
+PassK/                 Definitions, lemmas, and staged proof modules
+PROOF_STATUS.md        Theorem correspondence and verification scope
+lakefile.toml          Lake and Mathlib configuration
+lean-toolchain         Pinned Lean version
+.github/workflows/     Automated build checks
+```
