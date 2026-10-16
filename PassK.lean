@@ -14,10 +14,16 @@ import PassK.FiniteTesting
 import PassK.TwoPoint
 import PassK.LowerBounds
 import PassK.UpperBounds
+import PassK.Stage1LogPotential
+import PassK.Stage1LogUpdates
+import PassK.Stage2Exponential
+import PassK.Stage3Rates
+import PassK.Stage4LeCam
+import PassK.Stage5Minimax
 
 /-!
 # Pass@k formalization
 
-This file imports all available modules, including experimental modules.
+This file imports the finite-space foundation and the staged proof modules.
 The full manuscript is NOT yet formalized. See PROOF_STATUS.md.
 -/

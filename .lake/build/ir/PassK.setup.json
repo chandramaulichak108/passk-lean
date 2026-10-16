@@ -252,6 +252,18 @@
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/TwoPoint.olean"]],
   "PassK.StandardRobustPAC":
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/StandardRobustPAC.olean"]],
+  "PassK.Stage5Minimax":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Stage5Minimax.olean"]],
+  "PassK.Stage4LeCam":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Stage4LeCam.olean"]],
+  "PassK.Stage3Rates":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Stage3Rates.olean"]],
+  "PassK.Stage2Exponential":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Stage2Exponential.olean"]],
+  "PassK.Stage1LogUpdates":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Stage1LogUpdates.olean"]],
+  "PassK.Stage1LogPotential":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Stage1LogPotential.olean"]],
   "PassK.Preliminaries":
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Preliminaries.olean"]],
   "PassK.PolicyMixture":

@@ -1,48 +1,67 @@
-# Proof ledger for `arxiv_main_v2.tex`
+# Formalization status against `arxiv_main_v2.tex`
 
-This ledger distinguishes a **proof of the manuscript theorem** from a **proved implication subject to unproved hypotheses**. The listed main manuscript theorems are *not* yet formalized as complete Lean proofs. The current source is a research formalization in progress, not a verified reproduction of the paper.
+**As of 2026-10-16: NOT A COMPLETE MACHINE-CHECKED FORMALIZATION.**
+The expanded modules in this delivery were authored and statically inspected but **not executed by Lean**, because `lean`/`lake` are absent from the available runtime and outbound network access is unavailable. Existing user-provided logs validate selected earlier modules, not this expanded project. Compiling the new files is the next requirement.
 
-Status of the seven main theorems and two additional named results:
+The README is intentionally precise about the distinction between a mathematical theorem in the manuscript, a Lean proof of its actual statement, and a Lean *conditional reduction* whose hypotheses are not yet discharged.
 
-| Label in LaTeX | Manuscript statement | Current Lean contribution | Missing proof components |
-| --- | --- | --- | --- |
-| `thm:standard_passk_upper` | Standard pass@k PAC bound | `PolicyMixture`, `OneStepIID`, `MomentToTail`, `StandardRobustPAC`, `Coverage`, `OnlineRegret` prove or encode some deterministic/conditional steps | Full online-regret log potential, algorithm-specific exponential moment, history conditional-expectation argument, exact sample-complexity constants |
-| `thm:standard_passk_lower` | Standard pass@k minimax lower bound | `FiniteTesting` tests two finite worlds; `LowerBounds` generic minimax reduction | Class construction with prescribed cardinality, list-decoding information bound, class/confidence lower components and their combination |
-| `thm:standard_pass1_lower` | Standard pass@1 lower bound with suboptimality | `FiniteTesting` overlap testing lower bound; `TwoPoint` zero-information toy example | Class hard instance and KL calculations, list Fano, Assouad and two-point testing for nonzero bias, exact parameter ranges |
-| `thm:robust_passk_upper` | Robust pass@k PAC bound | `FiniteTail` union bound, `StandardRobustPAC.robustPAC_from_moments` | Establish the moment estimate for the algorithm, convert to robust supremum and sample-complexity numerical constants |
-| `thm:robust_passk_lower` | Robust pass@k minimax lower bound | Generic minimax/testing lemmas | Hard family, coverage/inclusion budget, tail bounds, combine class and confidence components |
-| `thm:robust_pass1_lower` | Robust pass@1 minimax lower bound | Generic testing lemma | Hypercube family and Assouad, neighboring KL, suboptimality constraints, confidence family |
-| `thm:online-regret` | Pathwise bounded online regret | `Coverage`, `GreedyCoverage`, `OnlineRegret`, `Bounds`, `Preliminaries` | Full reward-threshold log increment identity, AM–GM across L thresholds, exact theorem conclusion and log inequalities |
-| `lem:exponential_moment` | Algorithmic exponential-moment inequality | `MomentToTail` proves the *consequence* of a hypothesized moment inequality | One-step exponential chord inequality, filtration/conditional expectation and nonnegative supermartingale with algorithm's weights |
-| `thm:list_decoding_fano` | List-decoding Fano inequality (appendix) | No complete counterpart | Entropy/KL formalization and list-Fano proof |
+## Stage 1 — online regret (`thm:online-regret`)
 
-## Implemented building blocks
+**In Lean source**
+- `Coverage.greedy_weight_comparison`: greedy coverage inequality and non-increasing total potential.
+- `OnlineRegret.total_weight_le_initial`: roundwise pathwise potential invariant.
+- `Stage1LogPotential.log_le_scaled_tangent`: `log x ≤ log N + x/N − 1`.
+- `Stage1LogPotential.sum_log_le_card_log_of_mass`: AM–GM/log sum step.
+- `Stage1LogPotential.greedy_final_log_bound`: applies the potential invariant to fixed thresholds.
+- `Stage1LogUpdates.log_update_identity` and `log_weightsAfter_telescope`: exact per-pair logarithmic increments and telescoping.
+- `Stage1LogPotential.online_regret_of_log_comparison`: exact rounding-plus-regret conclusion **assuming** `hlogregret`.
 
-* `PassK/Values.lean`: finite probability laws and population pass@k value of possibly dependent tuples.
-* `PassK/Definitions.lean`: optimal value, demonstrator gap and its nonnegativity, robust and standard criteria.
-* `PassK/Coverage.lean`, `PassK/GreedyCoverage.lean`: finite greedy-coverage implications and potential update.
-* `PassK/OnlineRegret.lean`: positive-weight and non-increasing total-weight invariants; conditional deterministic regret arithmetic.
-* `PassK/Bounds.lean`, `PassK/Preliminaries.lean`: signed-regret and quantization-error arithmetic.
-* `PassK/FiniteTail.lean`: finite Markov inequality and union bounds.
-* `PassK/MomentToTail.lean`: if the exponential moment bound holds, obtain a tail bound.
-* `PassK/PolicyMixture.lean`: a finite uniform mixture of laws over whole k-tuples; its expected value and pass@k value average linearly, and so does signed excess.
-* `PassK/OneStepIID.lean`: algebraic expected one-step regret equals population excess for a fixed snapshot and finite fresh-example distribution.
-* `PassK/StandardRobustPAC.lean`: fixed-reward and robust high-probability consequences **assuming** an exponential moment and online-to-batch reduction.
-* `PassK/FiniteTesting.lean`: finite two-point overlap testing bound and the associated max-error lower bound.
-* `PassK/LowerBounds.lean`, `PassK/TwoPoint.lean`: general minimax implication and a zero-information toy lower bound.
+**Still to discharge:** connect reward quantization and the sets of covered `(reward, threshold)` pairs to `logStep`, prove the fixed-reward signed quantized-regret log inequality using the telescoping identity and the nested-threshold property, instantiate cardinality normalization with `R × Fin L`, and prove the binary `L=1` refinement.
 
-## Why these steps do not constitute a proof of all results
+## Stage 2 — exponential moment (`lem:exponential_moment`)
 
-The probabilities and bounds in `StandardRobustPAC.lean` include hypotheses named `hmoment` and `hreduction`. Those hypotheses must still be derived from the specific learner and its sampling law. Merely supplying those hypotheses does not prove the manuscript's theorems. Similarly, the `hard` hypothesis in `LowerBounds.lean` demands an adversarial witness for every algorithm; the manuscript constructs those witnesses via nontrivial hard families that are not in the Lean project.
+**In Lean source**
+- `Stage2Exponential.exponential_chord`: convex exponential chord.
+- `exp_shortfall_chord`, `exp_gain_chord`, `signed_exponential_chord`: exact one-step exponential inequality for `ell ∈ [-1,1]`.
+- `signed_chord_expected`, `one_step_exponential_supermartingale`: one-step finite expected-moment calculation.
+- `exponential_moment_of_supermartingale_budget`: pathwise-to-moment conclusion conditional on `hKmean`.
 
-## Verification and build
+**Still to discharge:** construct finite histories and the adaptive snapshot transition law, prove conditional measurability/independence, iterate the one-step bound to establish `E[K_m] ≤ 1`, connect `Z` with the algorithm's final log weights, and verify the exact coefficient `θ_k` used in the manuscript.
 
-This delivery was **statically inspected but not compiled**: there is no Lean/Lake executable and no network access for downloading the pinned toolchain in the generation environment. The user's previous build logs validated some earlier files, not the new ones. Do not announce a fully machine-checked result until `lake build` succeeds and the statements have been audited line-by-line for equivalence to the paper. The new files are imported by `PassK.lean`, so `lake build` will check them.
+## Stage 3 — high-probability upper bounds (`thm:standard_passk_upper`, `thm:robust_passk_upper`)
+
+**In Lean source**
+- `FiniteTail`: finite Markov inequality and finite union bound.
+- `MomentToTail`: exponential-moment-to-tail implication.
+- `PolicyMixture`, `OneStepIID`: complete-tuple mixture and one-step population regret definitions.
+- `StandardRobustPAC`: conditional standard and robust PAC implications.
+- `Stage3Rates`: `log(1+k/4) ≥ log k/2`, `2 log(3/2) < 1`, and the update-coefficient comparison.
+
+**Still to discharge:** derive the `hmoment` and `hreduction` hypotheses from the actual learning rule and the fresh IID sample, including the final `L=m` substitution and exact event thresholds. None of the paper's high-probability theorems is currently an unconditional Lean theorem.
+
+## Stage 4 — lower bounds (`thm:standard_passk_lower`, `thm:standard_pass1_lower`, `thm:robust_passk_lower`, `thm:robust_pass1_lower`)
+
+**In Lean source**
+- `FiniteTesting`: overlap-based two-point lower bound for arbitrary randomized tests.
+- `Stage4LeCam`: finite total variation, exact overlap identity, and Le Cam's `(1-TV)/2` lower bound.
+
+**Still to discharge:** explicitly construct the manuscript's families of distributions, finite reward classes with exactly `N` members, list-Fano inequality, coding/list-decoding arguments, Assouad hypercube, KL computations, confidence terms, demonstrator-optimality and suboptimality constraints, and all integer/ceiling constant manipulations.
+
+## Stage 5 — minimax rates (corollaries of upper/lower theorem statements)
+
+**In Lean source**
+- `LowerBounds`: minimax risk and the hard-instance witness principle.
+- `Stage5Minimax`: upper bound from a specific algorithm, a two-sided minimax sandwich, and combining two lower components using `max ≥ (a+b)/2`.
+
+**Still to discharge:** actual algorithm construction and actual adversarial witnesses from Stages 1–4; full sample-complexity definitions quantifying over algorithms and all sample counts; final standard/robust rate statements with their exact parameter regimes. Generic sandwich lemmas alone do not prove the paper's rates.
+
+## Verification checks
+
+Run from the repository root:
 
 ```bash
-lake update
-lake exe cache get
 lake build
+rg -n '\bsorry\b|^axiom\b' PassK --glob '*.lean'
 ```
 
-There are no declared `sorry` or `axiom` shortcuts in these source files. A `sorry`-free project still proves only what its declaration statements actually say.
+This search alone does not establish completeness. Lean does not prove a theorem merely because a file is named `UpperBounds.lean` or `LowerBounds.lean`; the declaration statement must be audited against the LaTeX theorem. As the stages are completed, mark them **machine-checked** only after successful compilation of the corresponding import tree and statement review.
