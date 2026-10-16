@@ -1,0 +1,39 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["6b8ee2f7062837b6.olean"],
+  "m": false,
+  "i": "a167553fd3c2577f.ilean",
+  "c": "996185d0ed589a29.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean /Users/chandramauli/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean /Users/chandramauli/Documents/GitHub/passk-lean/PassK/PolicyMixture.lean -o /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/PolicyMixture.olean -i /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/PolicyMixture.ilean -c /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/PolicyMixture.c --setup /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/PolicyMixture.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "PassK/PolicyMixture.lean:131:23: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`",
+   "level": "warning"},
+  {"message":
+   "PassK/PolicyMixture.lean:131:23: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`",
+   "level": "warning"}],
+ "inputs":
+ [["deps",
+   [["«passk-formalization»/PassK:extraDep",
+     [["@«passk-formalization»:extraDep", "00000000000006bb"]]],
+    ["imports",
+     [["PassK.FiniteTail transitive imports (legacy)", "0a7cf738b18928aa"],
+      ["PassK.FiniteTail:importAllArts", "fcf23b056eb258d6"]]]]],
+  ["libs",
+   [["import dynlibs", "00000000000006bb"],
+    ["package external libraries", "00000000000006bb"],
+    ["module dynlibs", "00000000000006bb"],
+    ["module plugins", "00000000000006bb"]]],
+  ["Lean 4.34.1, commit 5045d0056413266e57c625dcd7c365b10e377c52",
+   "e9f3658beb070375"],
+  ["/Users/chandramauli/Documents/GitHub/passk-lean/PassK/PolicyMixture.lean",
+   "d10fbb7b8e950f00"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: PassK.PolicyMixture", "0a79a87fb0c46360"],
+  ["Package.id?: (some passk-formalization)", "4857dcf00715245f"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "7405d46fb6c8db29"}

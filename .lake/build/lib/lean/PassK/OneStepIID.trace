@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["0165b7888e1b6a7e.olean"],
+  "m": false,
+  "i": "fca5c8de871f08f6.ilean",
+  "c": "72d0cac97b1c306d.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean /Users/chandramauli/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean /Users/chandramauli/Documents/GitHub/passk-lean/PassK/OneStepIID.lean -o /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/OneStepIID.olean -i /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/OneStepIID.ilean -c /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/OneStepIID.c --setup /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/OneStepIID.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["deps",
+   [["«passk-formalization»/PassK:extraDep",
+     [["@«passk-formalization»:extraDep", "00000000000006bb"]]],
+    ["imports",
+     [["PassK.Values transitive imports (legacy)", "203d1531fc936a18"],
+      ["PassK.Values:importAllArts", "a20f9be60f4a8a7f"]]]]],
+  ["libs",
+   [["import dynlibs", "00000000000006bb"],
+    ["package external libraries", "00000000000006bb"],
+    ["module dynlibs", "00000000000006bb"],
+    ["module plugins", "00000000000006bb"]]],
+  ["Lean 4.34.1, commit 5045d0056413266e57c625dcd7c365b10e377c52",
+   "e9f3658beb070375"],
+  ["/Users/chandramauli/Documents/GitHub/passk-lean/PassK/OneStepIID.lean",
+   "a203d1ba99b4b168"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: PassK.OneStepIID", "557763c722fd35c0"],
+  ["Package.id?: (some passk-formalization)", "4857dcf00715245f"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "92bfca17689ca49e"}

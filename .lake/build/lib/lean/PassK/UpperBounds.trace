@@ -15,7 +15,7 @@
      [["@«passk-formalization»:extraDep", "00000000000006bb"]]],
     ["imports",
      [["PassK.Definitions transitive imports (legacy)", "0a7cf738b18928aa"],
-      ["PassK.Definitions:importAllArts", "722b3659475cfd55"],
+      ["PassK.Definitions:importAllArts", "256a7919e1b1611d"],
       ["PassK.OnlineRegret transitive imports (legacy)", "b8633dc903ad166a"],
       ["PassK.OnlineRegret:importAllArts", "6f3602a285fc3ff6"]]]]],
   ["libs",
@@ -32,4 +32,4 @@
   ["Module.name: PassK.UpperBounds", "ee1c785808c4af7d"],
   ["Package.id?: (some passk-formalization)", "4857dcf00715245f"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "411ffecc8057496c"}
+ "depHash": "31be6b57505583cc"}

@@ -1,0 +1,45 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["fc8b95a164b65ec5.olean"],
+  "m": false,
+  "i": "4876b4d0191a3d21.ilean",
+  "c": "fa16c20e00556135.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean /Users/chandramauli/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean /Users/chandramauli/Documents/GitHub/passk-lean/PassK/FiniteTail.lean -o /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/FiniteTail.olean -i /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/FiniteTail.ilean -c /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/FiniteTail.c --setup /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/FiniteTail.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "PassK/FiniteTail.lean:86:17: `if_pos` has been deprecated: Use `ite_eq_left` instead",
+   "level": "warning"},
+  {"message":
+   "PassK/FiniteTail.lean:88:17: `if_neg` has been deprecated: Use `ite_eq_right` instead",
+   "level": "warning"},
+  {"message":
+   "PassK/FiniteTail.lean:129:26: this tactic is never executed\n\nNote: This linter can be disabled with `set_option linter.unreachableTactic false`",
+   "level": "warning"},
+  {"message":
+   "PassK/FiniteTail.lean:129:26: Unused tactic linter: `ring` does nothing\n\nNote: This linter can be disabled with `set_option linter.unusedTactic false`",
+   "level": "warning"}],
+ "inputs":
+ [["deps",
+   [["«passk-formalization»/PassK:extraDep",
+     [["@«passk-formalization»:extraDep", "00000000000006bb"]]],
+    ["imports",
+     [["PassK.Values transitive imports (legacy)", "203d1531fc936a18"],
+      ["PassK.Values:importAllArts", "a20f9be60f4a8a7f"]]]]],
+  ["libs",
+   [["import dynlibs", "00000000000006bb"],
+    ["package external libraries", "00000000000006bb"],
+    ["module dynlibs", "00000000000006bb"],
+    ["module plugins", "00000000000006bb"]]],
+  ["Lean 4.34.1, commit 5045d0056413266e57c625dcd7c365b10e377c52",
+   "e9f3658beb070375"],
+  ["/Users/chandramauli/Documents/GitHub/passk-lean/PassK/FiniteTail.lean",
+   "f2f20be522bc95e2"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: PassK.FiniteTail", "3ada76be0c015485"],
+  ["Package.id?: (some passk-formalization)", "4857dcf00715245f"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "18d10ab803575dda"}

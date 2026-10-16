@@ -248,14 +248,28 @@
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Values.olean"]],
   "PassK.UpperBounds":
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/UpperBounds.olean"]],
+  "PassK.TwoPoint":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/TwoPoint.olean"]],
+  "PassK.StandardRobustPAC":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/StandardRobustPAC.olean"]],
   "PassK.Preliminaries":
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Preliminaries.olean"]],
+  "PassK.PolicyMixture":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/PolicyMixture.olean"]],
   "PassK.OnlineRegret":
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/OnlineRegret.olean"]],
+  "PassK.OneStepIID":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/OneStepIID.olean"]],
+  "PassK.MomentToTail":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/MomentToTail.olean"]],
   "PassK.LowerBounds":
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/LowerBounds.olean"]],
   "PassK.GreedyCoverage":
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/GreedyCoverage.olean"]],
+  "PassK.FiniteTesting":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/FiniteTesting.olean"]],
+  "PassK.FiniteTail":
+  [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/FiniteTail.olean"]],
   "PassK.Definitions":
   [["/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Definitions.olean"]],
   "PassK.Coverage":

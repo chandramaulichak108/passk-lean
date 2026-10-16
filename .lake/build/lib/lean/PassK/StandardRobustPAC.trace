@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["340c308a25c17a03.olean"],
+  "m": false,
+  "i": "b3c5761795125765.ilean",
+  "c": "ecda2905f30184a7.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean /Users/chandramauli/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean /Users/chandramauli/Documents/GitHub/passk-lean/PassK/StandardRobustPAC.lean -o /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/StandardRobustPAC.olean -i /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/StandardRobustPAC.ilean -c /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/StandardRobustPAC.c --setup /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/StandardRobustPAC.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["deps",
+   [["«passk-formalization»/PassK:extraDep",
+     [["@«passk-formalization»:extraDep", "00000000000006bb"]]],
+    ["imports",
+     [["PassK.MomentToTail transitive imports (legacy)", "61746450ec9d862c"],
+      ["PassK.MomentToTail:importAllArts", "52ea650b9d37e967"]]]]],
+  ["libs",
+   [["import dynlibs", "00000000000006bb"],
+    ["package external libraries", "00000000000006bb"],
+    ["module dynlibs", "00000000000006bb"],
+    ["module plugins", "00000000000006bb"]]],
+  ["Lean 4.34.1, commit 5045d0056413266e57c625dcd7c365b10e377c52",
+   "e9f3658beb070375"],
+  ["/Users/chandramauli/Documents/GitHub/passk-lean/PassK/StandardRobustPAC.lean",
+   "d47284bbf19d96ad"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: PassK.StandardRobustPAC", "0f265403d0baa9db"],
+  ["Package.id?: (some passk-formalization)", "4857dcf00715245f"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "134162c355d65b7a"}

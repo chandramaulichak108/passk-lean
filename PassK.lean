@@ -1,16 +1,23 @@
 import PassK.Values
-import PassK.Bounds
-import PassK.Coverage
 import PassK.Definitions
-import PassK.Preliminaries
+import PassK.Coverage
 import PassK.GreedyCoverage
+import PassK.Bounds
+import PassK.Preliminaries
 import PassK.OnlineRegret
-import PassK.UpperBounds
+import PassK.PolicyMixture
+import PassK.OneStepIID
+import PassK.FiniteTail
+import PassK.MomentToTail
+import PassK.StandardRobustPAC
+import PassK.FiniteTesting
+import PassK.TwoPoint
 import PassK.LowerBounds
+import PassK.UpperBounds
 
 /-!
 # Pass@k formalization
 
-Importing `PassK` loads all currently formalized definitions and lemmas.
-Consult README.md for verification status and remaining proof gaps.
+This file imports all available modules, including experimental modules.
+The full manuscript is NOT yet formalized. See PROOF_STATUS.md.
 -/

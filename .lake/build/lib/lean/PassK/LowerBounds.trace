@@ -14,7 +14,7 @@
    [["«passk-formalization»/PassK:extraDep",
      [["@«passk-formalization»:extraDep", "00000000000006bb"]]],
     ["imports",
-     [["PassK.UpperBounds transitive imports (legacy)", "5ae267af037cbb7d"],
+     [["PassK.UpperBounds transitive imports (legacy)", "8cddbcb7eaa0e0f9"],
       ["PassK.UpperBounds:importAllArts", "0b5cc709e0bfe88d"]]]]],
   ["libs",
    [["import dynlibs", "00000000000006bb"],
@@ -30,4 +30,4 @@
   ["Module.name: PassK.LowerBounds", "029e0cf04da592d2"],
   ["Package.id?: (some passk-formalization)", "4857dcf00715245f"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "c7caf2f654c4d468"}
+ "depHash": "4a79cd27821e1508"}

@@ -1,14 +1,17 @@
 {"synthetic": false,
  "schemaVersion": "2025-09-10",
  "outputs":
- {"o": ["03abb94a231d9dce.olean"],
+ {"o": ["81af776738daab9a.olean"],
   "m": false,
-  "i": "0578090fdbe56ab0.ilean",
+  "i": "700b1b2ff539be0a.ilean",
   "c": "e6355a252c771f8f.c"},
  "log":
  [{"message":
    ".> LEAN_PATH=/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean /Users/chandramauli/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean /Users/chandramauli/Documents/GitHub/passk-lean/PassK/Definitions.lean -o /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Definitions.olean -i /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/Definitions.ilean -c /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/Definitions.c --setup /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/Definitions.setup.json --json",
-   "level": "trace"}],
+   "level": "trace"},
+  {"message":
+   "PassK/Definitions.lean:37:0: automatically included section variable(s) unused in theorem `PassK.Finite.reward_le_pointwiseOptimal`:\n  [Fintype X]\nconsider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:\n  omit [Fintype X] in theorem ...\n\nNote: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+   "level": "warning"}],
  "inputs":
  [["deps",
    [["«passk-formalization»/PassK:extraDep",
@@ -24,10 +27,10 @@
   ["Lean 4.34.1, commit 5045d0056413266e57c625dcd7c365b10e377c52",
    "e9f3658beb070375"],
   ["/Users/chandramauli/Documents/GitHub/passk-lean/PassK/Definitions.lean",
-   "f000e87d3ca48d6c"],
+   "a0e78b1a75acc224"],
   ["options", "00000000000006bb"],
   ["isModule: false", "feefd2a0d3a1847e"],
   ["Module.name: PassK.Definitions", "4d51aef6b91a1732"],
   ["Package.id?: (some passk-formalization)", "4857dcf00715245f"],
   ["Module.leanArgs: #[]", "00000000000006bb"]],
- "depHash": "4c876d3fd4e9d50a"}
+ "depHash": "506a65107840047f"}

@@ -1,0 +1,33 @@
+{"synthetic": false,
+ "schemaVersion": "2025-09-10",
+ "outputs":
+ {"o": ["e620d94dda8cc389.olean"],
+  "m": false,
+  "i": "bb0df5046cdf17fc.ilean",
+  "c": "1be2afe69bf46c91.c"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Cli/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/batteries/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/Qq/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/aesop/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/proofwidgets/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/importGraph/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/plausible/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/packages/mathlib/.lake/build/lib/lean:/Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean /Users/chandramauli/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean /Users/chandramauli/Documents/GitHub/passk-lean/PassK/MomentToTail.lean -o /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/MomentToTail.olean -i /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/lib/lean/PassK/MomentToTail.ilean -c /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/MomentToTail.c --setup /Users/chandramauli/Documents/GitHub/passk-lean/.lake/build/ir/PassK/MomentToTail.setup.json --json",
+   "level": "trace"}],
+ "inputs":
+ [["deps",
+   [["«passk-formalization»/PassK:extraDep",
+     [["@«passk-formalization»:extraDep", "00000000000006bb"]]],
+    ["imports",
+     [["PassK.FiniteTail transitive imports (legacy)", "0a7cf738b18928aa"],
+      ["PassK.FiniteTail:importAllArts", "fcf23b056eb258d6"]]]]],
+  ["libs",
+   [["import dynlibs", "00000000000006bb"],
+    ["package external libraries", "00000000000006bb"],
+    ["module dynlibs", "00000000000006bb"],
+    ["module plugins", "00000000000006bb"]]],
+  ["Lean 4.34.1, commit 5045d0056413266e57c625dcd7c365b10e377c52",
+   "e9f3658beb070375"],
+  ["/Users/chandramauli/Documents/GitHub/passk-lean/PassK/MomentToTail.lean",
+   "a0bc64c5a66e4a5c"],
+  ["options", "00000000000006bb"],
+  ["isModule: false", "feefd2a0d3a1847e"],
+  ["Module.name: PassK.MomentToTail", "5d936df47d695723"],
+  ["Package.id?: (some passk-formalization)", "4857dcf00715245f"],
+  ["Module.leanArgs: #[]", "00000000000006bb"]],
+ "depHash": "5180983f37ad975b"}
