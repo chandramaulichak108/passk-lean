@@ -31,7 +31,8 @@ theorem signed_increment_bound (a b z : ℝ) (hba : b ≤ a) :
     a * z ≤ a * max z 0 - b * max (-z) 0 := by
   have hn : 0 ≤ max (-z) 0 := le_max_right _ _
   calc
-    a * z = a * (max z 0 - max (-z) 0) := by rw [signed_parts z]
+    a * z = a * (max z 0 - max (-z) 0) := by
+      exact congrArg (fun t : ℝ => a * t) (signed_parts z)
     _ = a * max z 0 - a * max (-z) 0 := by ring
     _ ≤ a * max z 0 - b * max (-z) 0 := by
       have hh := mul_le_mul_of_nonneg_right hba hn

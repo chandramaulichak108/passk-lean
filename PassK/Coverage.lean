@@ -16,6 +16,8 @@ provided by choosing a maximum-gain response.  It does *not* assume that
 the demonstrator is optimal for any reward.
 -/
 
+noncomputable section
+
 namespace PassK
 
 variable {α : Type*} [DecidableEq α]
@@ -25,17 +27,17 @@ def weight (w : α → ℝ) (s : Finset α) : ℝ :=
   ∑ a ∈ s, w a
 
 /-- Coverage accumulated from the first `n` choices. -/
-def prefix (A : ℕ → Finset α) : ℕ → Finset α
+def coveragePrefix (A : ℕ → Finset α) : ℕ → Finset α
   | 0 => ∅
-  | n + 1 => prefix A n ∪ A n
+  | n + 1 => coveragePrefix A n ∪ A n
 
-@[simp] theorem prefix_zero (A : ℕ → Finset α) : prefix A 0 = ∅ := rfl
+@[simp] theorem prefix_zero (A : ℕ → Finset α) : coveragePrefix A 0 = ∅ := rfl
 
 @[simp] theorem prefix_succ (A : ℕ → Finset α) (n : ℕ) :
-    prefix A (n + 1) = prefix A n ∪ A n := rfl
+    coveragePrefix A (n + 1) = coveragePrefix A n ∪ A n := rfl
 
 /-- As more responses are selected, coverage can only grow. -/
-theorem prefix_mono (A : ℕ → Finset α) : Monotone (prefix A) := by
+theorem prefix_mono (A : ℕ → Finset α) : Monotone (coveragePrefix A) := by
   apply monotone_nat_of_le_succ
   intro n
   rw [prefix_succ]
@@ -84,22 +86,22 @@ theorem weight_union_increment (w : α → ℝ) (s C D : Finset α) :
     tauto
   simpa only [weight, hid] using
     (Finset.sum_sdiff_eq_sub
-      (s₁ := s \ D) (s₂ := (s ∪ C) \ D) (f := w) hsub)
+      (s₁ := s \ D) (s₂ := (s ∪ C) \ D) (f := w) hsub).symm
 
-/-- One increment in learner-only coverage along the prefix sequence. -/
+/-- One increment in learner-only coverage along the coveragePrefix sequence. -/
 theorem weight_prefix_increment (w : α → ℝ) (A : ℕ → Finset α)
     (D : Finset α) (i : ℕ) :
-    weight w (prefix A (i + 1) \ D) - weight w (prefix A i \ D) =
-      weight w ((A i \ prefix A i) \ D) := by
+    weight w (coveragePrefix A (i + 1) \ D) - weight w (coveragePrefix A i \ D) =
+      weight w ((A i \ coveragePrefix A i) \ D) := by
   simpa only [prefix_succ] using
-    (weight_union_increment w (prefix A i) (A i) D)
+    (weight_union_increment w (coveragePrefix A i) (A i) D)
 
 /-- Newly covered sets outside `D` partition final coverage outside `D`.
     This identity is proved, not supplied as an extra premise. -/
 theorem weight_prefix_telescoping (w : α → ℝ) (A : ℕ → Finset α)
     (D : Finset α) (k : ℕ) :
-    (∑ i ∈ Finset.range k, weight w ((A i \ prefix A i) \ D)) =
-      weight w (prefix A k \ D) := by
+    (∑ i ∈ Finset.range k, weight w ((A i \ coveragePrefix A i) \ D)) =
+      weight w (coveragePrefix A k \ D) := by
   induction k with
   | zero =>
       simp [weight]
@@ -117,39 +119,39 @@ demonstrator.  Crucially, `D` may be completely arbitrary. -/
 theorem greedy_weight_comparison (w : α → ℝ) (hw : ∀ a, 0 ≤ w a)
     (A : ℕ → Finset α) (D : Finset α) (k : ℕ)
     (hGreedy : ∀ i < k,
-      weight w (D \ prefix A i) ≤ weight w (A i \ prefix A i)) :
-    (k : ℝ) * weight w (D \ prefix A k) ≤
-      weight w (prefix A k \ D) := by
+      weight w (D \ coveragePrefix A i) ≤ weight w (A i \ coveragePrefix A i)) :
+    (k : ℝ) * weight w (D \ coveragePrefix A k) ≤
+      weight w (coveragePrefix A k \ D) := by
   have hsum :
-      (∑ _i ∈ Finset.range k, weight w (D \ prefix A k)) ≤
-        ∑ i ∈ Finset.range k, weight w ((A i \ prefix A i) \ D) := by
+      (∑ _i ∈ Finset.range k, weight w (D \ coveragePrefix A k)) ≤
+        ∑ i ∈ Finset.range k, weight w ((A i \ coveragePrefix A i) \ D) := by
     apply Finset.sum_le_sum
     intro i hi
     have hik : i < k := Finset.mem_range.mp hi
     have hle : i + 1 ≤ k := Nat.succ_le_iff.mpr hik
-    have hmono : prefix A (i + 1) ⊆ prefix A k :=
+    have hmono : coveragePrefix A (i + 1) ⊆ coveragePrefix A k :=
       prefix_mono A hle
-    have hsub : D \ prefix A k ⊆ D \ prefix A (i + 1) := by
+    have hsub : D \ coveragePrefix A k ⊆ D \ coveragePrefix A (i + 1) := by
       intro a ha
       rcases Finset.mem_sdiff.mp ha with ⟨haD, han⟩
       apply Finset.mem_sdiff.mpr
       refine ⟨haD, ?_⟩
       intro haa
       exact han (hmono haa)
-    have hrest : weight w (D \ prefix A k) ≤
-        weight w (D \ prefix A (i + 1)) :=
+    have hrest : weight w (D \ coveragePrefix A k) ≤
+        weight w (D \ coveragePrefix A (i + 1)) :=
       weight_mono w hw hsub
-    have hstep : weight w (D \ prefix A (i + 1)) ≤
-        weight w ((A i \ prefix A i) \ D) := by
+    have hstep : weight w (D \ coveragePrefix A (i + 1)) ≤
+        weight w ((A i \ coveragePrefix A i) \ D) := by
       simpa only [prefix_succ] using
-        (greedy_step w (prefix A i) (A i) D (hGreedy i hik))
+        (greedy_step w (coveragePrefix A i) (A i) D (hGreedy i hik))
     exact hrest.trans hstep
   calc
-    (k : ℝ) * weight w (D \ prefix A k) =
-        ∑ _i ∈ Finset.range k, weight w (D \ prefix A k) := by
+    (k : ℝ) * weight w (D \ coveragePrefix A k) =
+        ∑ _i ∈ Finset.range k, weight w (D \ coveragePrefix A k) := by
           simp [nsmul_eq_mul]
-    _ ≤ ∑ i ∈ Finset.range k, weight w ((A i \ prefix A i) \ D) := hsum
-    _ = weight w (prefix A k \ D) := weight_prefix_telescoping w A D k
+    _ ≤ ∑ i ∈ Finset.range k, weight w ((A i \ coveragePrefix A i) \ D) := hsum
+    _ = weight w (coveragePrefix A k \ D) := weight_prefix_telescoping w A D k
 
 /-- The asymmetric multiplicative update from Algorithm 1 of the paper.
     Missed pairs are multiplied by `1 + k/4`, exclusively learner-covered
@@ -235,10 +237,10 @@ theorem update_total_le (k : ℕ) (D U : Finset α) (w : α → ℝ)
 theorem greedy_update_total_le (w : α → ℝ) (hw : ∀ a, 0 ≤ w a)
     (A : ℕ → Finset α) (D : Finset α) (k : ℕ)
     (hGreedy : ∀ i < k,
-      weight w (D \ prefix A i) ≤ weight w (A i \ prefix A i)) :
-    weight (update k D (prefix A k) w) (Finset.univ : Finset α) ≤
+      weight w (D \ coveragePrefix A i) ≤ weight w (A i \ coveragePrefix A i)) :
+    weight (update k D (coveragePrefix A k) w) (Finset.univ : Finset α) ≤
       weight w (Finset.univ : Finset α) :=
-  update_total_le k D (prefix A k) w
+  update_total_le k D (coveragePrefix A k) w
     (greedy_weight_comparison w hw A D k hGreedy)
 
 end FiniteUniverse
